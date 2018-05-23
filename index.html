@@ -5,12 +5,21 @@
 			<div style="height:50%;"onmouseover="init()"></div>
 		</div>
 		<script>
-			function myFunction() {
-				setTimeout(function(){
-					document.getElementById('check').style.background = 'black';
-				}, 720000);
+			function toggleCSS(id, pty, v1, v2, ms){
+			  var os=document.getElementById(id).style;
+			  os[pty]= (os[pty] == v1 ) ? v2 : v1;
+			  setTimeout('toggleCSS("'+id+'","'+pty+'","'+v1+'","'+v2+'",'+ms+')', ms);
 			}
 			myFunction();
+			
+			function myFunction() {
+				setTimeout(function(){
+// 					document.getElementById('check').style.background = 'black';
+					toggleCSS("check", "backgroundColor", "black", "white", 100);
+				}, 720000);
+			}
+			
+
 			
 			function init() {
 				location.reload();
